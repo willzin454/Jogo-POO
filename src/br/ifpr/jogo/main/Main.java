@@ -8,8 +8,8 @@ public class Main extends JFrame {
         Fase fase = new Fase();
         super.add(fase);
         super.setVisible(true);
-        super.setSize(3500, 2031);
-        super.setTitle("OperadorNier");
+        super.setSize(1980, 1080);
+        super.setTitle("Operador");
         super.setLocationRelativeTo(null);
         super.setDefaultCloseOperation(ABORT);
     }

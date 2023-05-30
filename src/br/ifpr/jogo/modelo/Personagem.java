@@ -1,7 +1,6 @@
 package br.ifpr.jogo.modelo;
 
 import java.awt.Image;
-
 import javax.swing.ImageIcon;
 
 public class Personagem {
@@ -19,8 +18,7 @@ public class Personagem {
     }
 
     public void carregar() {
-        ImageIcon carregando = new ImageIcon(
-                "C:\\Users\\Aluno\\Desktop\\Aula\\Jogo-POO\\src\\recursos\\espaconave.png");
+        ImageIcon carregando = new ImageIcon("C:\\Users\\willi\\OneDrive\\Documentos\\Jogo-POO\\Jogo-POO\\src\\recursos\\iamgen2.jpg");
         this.imagem = carregando.getImage();
         this.alturaImage = this.imagem.getWidth(null);
         this.alturaImage = this.imagem.getHeight(null);

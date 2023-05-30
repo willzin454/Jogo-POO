@@ -11,8 +11,7 @@ public class Fase extends JPanel { // toda classe java herda da Object
     private Personagem Personagem;
 
     public Fase() {
-        ImageIcon carregando = new ImageIcon(
-                "C:\\Users\\Aluno\\Desktop\\Aula\\Jogo-POO\\src\\recursos\\fundo.jpg");
+        ImageIcon carregando = new ImageIcon("C:\\Users\\willi\\OneDrive\\Documentos\\Jogo-POO\\Jogo-POO\\src\\recursos\\imagen5.png");
         this.imagemfundo = carregando.getImage();
 
         this.Personagem = new Personagem();
