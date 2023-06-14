@@ -1,59 +1,104 @@
 package br.ifpr.jogo.modelo;
 
 import java.awt.Image;
+import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
+import java.util.Objects;
 
 public class Personagem {
-    private int posicaoEmx;
-    private int posicaoEmy;
-    private int deslocamentoEmx;
-    private int deslocamentoEmy;
+    private int posicaoEmX;
+    private int posicaoEmY;
+    private int deslocamentoEmX;
+    private int deslocamentoEmY;
     private Image imagem;
     private int larguraImagem;
     private int alturaImage;
+    private static final int DESLOCAMENTO = 3;
+    private static final int POSICAO_INICIAL_EM_X = 100;
+    private static final int POSICAO_INICIAL_EM_Y = 100;
 
     public Personagem() {
-        this.posicaoEmx = 100;
-        this.posicaoEmy = 100;
+        this.posicaoEmX = POSICAO_INICIAL_EM_X;
+        this.posicaoEmY = POSICAO_INICIAL_EM_Y;
     }
 
     public void carregar() {
-        ImageIcon carregando = new ImageIcon("C:\\Users\\willi\\OneDrive\\Documentos\\Jogo-POO\\Jogo-POO\\src\\recursos\\iamgen2.jpg");
+        ImageIcon carregando = new ImageIcon("C:\\Users\\Aluno\\Desktop\\Jogo\\Jogo-POO\\src\\recursos\\iamgen2.jpg");
         this.imagem = carregando.getImage();
         this.alturaImage = this.imagem.getWidth(null);
         this.alturaImage = this.imagem.getHeight(null);
     }
 
+    public void mover(KeyEvent tecla) {
+        int codigo = tecla.getKeyCode();
+        switch (codigo) {
+            case KeyEvent.VK_UP:
+                this.deslocamentoEmY = -DESLOCAMENTO;
+                break;
+            case KeyEvent.VK_DOWN:
+                this.deslocamentoEmY = DESLOCAMENTO;
+                break;
+            case KeyEvent.VK_LEFT:
+                this.deslocamentoEmX = -DESLOCAMENTO;
+                break;
+            case KeyEvent.VK_RIGHT:
+                this.deslocamentoEmX = DESLOCAMENTO;
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void parar(KeyEvent tecla) {
+        int codigo = tecla.getKeyCode();
+        switch (codigo) {
+            case KeyEvent.VK_UP:
+                deslocamentoEmY = 0;
+                break;
+            case KeyEvent.VK_DOWN:
+                deslocamentoEmY = 0;
+                break;
+            case KeyEvent.VK_LEFT:
+                deslocamentoEmX = 0;
+                break;
+            case KeyEvent.VK_RIGHT:
+                deslocamentoEmX = 0;
+                break;
+            default:
+                break;
+        }
+    }
+
     public int getPosicaoEmx() {
-        return this.posicaoEmx;
+        return this.posicaoEmX;
     }
 
     public void setPosicaoEmx(int posicaoEmx) {
-        this.posicaoEmx = posicaoEmx;
+        this.posicaoEmX = posicaoEmx;
     }
 
     public int getPosicaoEmy() {
-        return this.posicaoEmy;
+        return this.posicaoEmY;
     }
 
     public void setPosicaoEmy(int posicaoEmy) {
-        this.posicaoEmy = posicaoEmy;
+        this.posicaoEmY = posicaoEmy;
     }
 
     public int getDeslocamentoEmx() {
-        return this.deslocamentoEmx;
+        return this.deslocamentoEmX;
     }
 
     public void setDeslocamentoEmx(int deslocamentoEmx) {
-        this.deslocamentoEmx = deslocamentoEmx;
+        this.deslocamentoEmX = deslocamentoEmx;
     }
 
     public int getDeslocamentoEmy() {
-        return this.deslocamentoEmy;
+        return this.deslocamentoEmY;
     }
 
     public void setDeslocamentoEmy(int deslocamentoEmy) {
-        this.deslocamentoEmy = deslocamentoEmy;
+        this.deslocamentoEmY = deslocamentoEmy;
     }
 
     public Image getImagem() {
@@ -78,6 +123,43 @@ public class Personagem {
 
     public void setAlturaImage(int alturaImage) {
         this.alturaImage = alturaImage;
+    }
+
+    public void atualizar() {
+        this.posicaoEmX = this.posicaoEmX + this.deslocamentoEmX;
+        this.posicaoEmY = this.posicaoEmY + this.deslocamentoEmY;
+    }
+
+    public int getPosicaoEmX() {
+        return this.posicaoEmX;
+    }
+
+    public void setPosicaoEmX(int posicaoEmX) {
+        this.posicaoEmX = posicaoEmX;
+    }
+
+    public int getPosicaoEmY() {
+        return this.posicaoEmY;
+    }
+
+    public void setPosicaoEmY(int posicaoEmY) {
+        this.posicaoEmY = posicaoEmY;
+    }
+
+    public int getDeslocamentoEmX() {
+        return this.deslocamentoEmX;
+    }
+
+    public void setDeslocamentoEmX(int deslocamentoEmX) {
+        this.deslocamentoEmX = deslocamentoEmX;
+    }
+
+    public int getDeslocamentoEmY() {
+        return this.deslocamentoEmY;
+    }
+
+    public void setDeslocamentoEmY(int deslocamentoEmY) {
+        this.deslocamentoEmY = deslocamentoEmY;
     }
 
 }
