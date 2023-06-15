@@ -17,19 +17,21 @@ public class Fase extends JPanel implements ActionListener, KeyListener {
     private Image imagemfundo;
     private Personagem personagem;
     private Timer timer;
+
     private static final int DELAY = 5;
+    private static final int DESLOCAMENTO = 3;
 
     public Fase() {
-        setFocusable(true);
-        setDoubleBuffered(true);
-        ImageIcon carregando = new ImageIcon("C:\\Users\\Aluno\\Desktop\\Jogo\\Jogo-POO\\src\\recursos\\imagen5.png");
+        this.setFocusable(true);
+        this.setDoubleBuffered(true);
+        ImageIcon carregando = new ImageIcon("recursos\\imagen5.png");
         this.imagemfundo = carregando.getImage();
         fundo = carregando.getImage();
-        this.personagem = new Personagem();
-        this.personagem.carregar();
-        addKeyListener(this);
-        timer = new Timer(DELAY, this);
-        timer.start();
+        Personagem personagem = new Personagem(DESLOCAMENTO);
+        personagem.carregar();
+        this.addKeyListener(this);
+        this.timer = new Timer(DELAY, this);
+        this.timer.start();
     }
 
     public void paint(Graphics g) {
@@ -42,25 +44,21 @@ public class Fase extends JPanel implements ActionListener, KeyListener {
     @Override
     public void keyTyped(KeyEvent e) {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'keyTyped'");
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'keyPressed'");
+        this.personagem.mover(e);
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'keyReleased'");
+        this.personagem.parar(e);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
+        this.personagem.atualizar();
+        repaint();
     }
-
 }

@@ -1,6 +1,7 @@
 package br.ifpr.jogo.modelo;
 
 import java.awt.Image;
+import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import java.util.Objects;
@@ -13,36 +14,42 @@ public class Personagem {
     private Image imagem;
     private int larguraImagem;
     private int alturaImage;
-    private static final int DESLOCAMENTO = 3;
+    private int velocidadedeDeslocamento;
+
     private static final int POSICAO_INICIAL_EM_X = 100;
     private static final int POSICAO_INICIAL_EM_Y = 100;
 
-    public Personagem() {
+    public Personagem(int deslocamento) {
         this.posicaoEmX = POSICAO_INICIAL_EM_X;
         this.posicaoEmY = POSICAO_INICIAL_EM_Y;
     }
 
     public void carregar() {
-        ImageIcon carregando = new ImageIcon("C:\\Users\\Aluno\\Desktop\\Jogo\\Jogo-POO\\src\\recursos\\iamgen2.jpg");
+        ImageIcon carregando = new ImageIcon("recursos\\iamgen2.jpg");
         this.imagem = carregando.getImage();
         this.alturaImage = this.imagem.getWidth(null);
         this.alturaImage = this.imagem.getHeight(null);
+    }
+
+    public void atualizar() {
+        this.posicaoEmX = this.posicaoEmX + this.deslocamentoEmX;
+        this.posicaoEmY = this.posicaoEmY + this.deslocamentoEmY;
     }
 
     public void mover(KeyEvent tecla) {
         int codigo = tecla.getKeyCode();
         switch (codigo) {
             case KeyEvent.VK_UP:
-                this.deslocamentoEmY = -DESLOCAMENTO;
+                this.deslocamentoEmY = -this.velocidadedeDeslocamento;
                 break;
             case KeyEvent.VK_DOWN:
-                this.deslocamentoEmY = DESLOCAMENTO;
+                this.deslocamentoEmY = this.velocidadedeDeslocamento;
                 break;
             case KeyEvent.VK_LEFT:
-                this.deslocamentoEmX = -DESLOCAMENTO;
+                this.deslocamentoEmX = this.velocidadedeDeslocamento;
                 break;
             case KeyEvent.VK_RIGHT:
-                this.deslocamentoEmX = DESLOCAMENTO;
+                this.deslocamentoEmX = -this.velocidadedeDeslocamento;
                 break;
             default:
                 break;
@@ -53,16 +60,16 @@ public class Personagem {
         int codigo = tecla.getKeyCode();
         switch (codigo) {
             case KeyEvent.VK_UP:
-                deslocamentoEmY = 0;
+                this.deslocamentoEmY = 0;
                 break;
             case KeyEvent.VK_DOWN:
-                deslocamentoEmY = 0;
+                this.deslocamentoEmY = 0;
                 break;
             case KeyEvent.VK_LEFT:
-                deslocamentoEmX = 0;
+                this.deslocamentoEmX = 0;
                 break;
             case KeyEvent.VK_RIGHT:
-                deslocamentoEmX = 0;
+                this.deslocamentoEmX = 0;
                 break;
             default:
                 break;
@@ -125,11 +132,6 @@ public class Personagem {
         this.alturaImage = alturaImage;
     }
 
-    public void atualizar() {
-        this.posicaoEmX = this.posicaoEmX + this.deslocamentoEmX;
-        this.posicaoEmY = this.posicaoEmY + this.deslocamentoEmY;
-    }
-
     public int getPosicaoEmX() {
         return this.posicaoEmX;
     }
@@ -161,5 +163,4 @@ public class Personagem {
     public void setDeslocamentoEmY(int deslocamentoEmY) {
         this.deslocamentoEmY = deslocamentoEmY;
     }
-
 }

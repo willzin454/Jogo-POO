@@ -5,6 +5,8 @@
         "lib/**/*.jar"
     ],
     "cSpell.words": [
-        "carregando"
+        "atualizar",
+        "carregando",
+        "DESLOCAMENTO"
     ]
 }
