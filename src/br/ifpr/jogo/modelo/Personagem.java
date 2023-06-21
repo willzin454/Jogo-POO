@@ -1,10 +1,8 @@
 package br.ifpr.jogo.modelo;
 
 import java.awt.Image;
-import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
-import java.util.Objects;
 
 public class Personagem {
     private int posicaoEmX;
@@ -22,6 +20,7 @@ public class Personagem {
     public Personagem(int deslocamento) {
         this.posicaoEmX = POSICAO_INICIAL_EM_X;
         this.posicaoEmY = POSICAO_INICIAL_EM_Y;
+        this.velocidadedeDeslocamento = deslocamento;
     }
 
     public void carregar() {
@@ -46,10 +45,10 @@ public class Personagem {
                 this.deslocamentoEmY = this.velocidadedeDeslocamento;
                 break;
             case KeyEvent.VK_LEFT:
-                this.deslocamentoEmX = this.velocidadedeDeslocamento;
+                this.deslocamentoEmX = -this.velocidadedeDeslocamento;
                 break;
             case KeyEvent.VK_RIGHT:
-                this.deslocamentoEmX = -this.velocidadedeDeslocamento;
+                this.deslocamentoEmX = this.velocidadedeDeslocamento;
                 break;
             default:
                 break;

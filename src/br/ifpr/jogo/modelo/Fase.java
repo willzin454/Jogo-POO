@@ -13,8 +13,7 @@ import javax.swing.JPanel;
 
 public class Fase extends JPanel implements ActionListener, KeyListener {
 
-    private Image fundo;
-    private Image imagemfundo;
+    public Image fundo;
     private Personagem personagem;
     private Timer timer;
 
@@ -25,9 +24,8 @@ public class Fase extends JPanel implements ActionListener, KeyListener {
         this.setFocusable(true);
         this.setDoubleBuffered(true);
         ImageIcon carregando = new ImageIcon("recursos\\imagen5.png");
-        this.imagemfundo = carregando.getImage();
-        fundo = carregando.getImage();
-        Personagem personagem = new Personagem(DESLOCAMENTO);
+        this.fundo = carregando.getImage();
+        this.personagem = new Personagem(DESLOCAMENTO);
         personagem.carregar();
         this.addKeyListener(this);
         this.timer = new Timer(DELAY, this);
@@ -36,8 +34,9 @@ public class Fase extends JPanel implements ActionListener, KeyListener {
 
     public void paint(Graphics g) {
         Graphics2D graficos = (Graphics2D) g;
-        graficos.drawImage(this.imagemfundo, 0, 0, null);
-        graficos.drawImage(this.personagem.getImagem(), 0, 0, null);
+        graficos.drawImage(this.fundo, 0, 0, null);
+        graficos.drawImage(this.personagem.getImagem(), this.personagem.getPosicaoEmX(),
+                this.personagem.getPosicaoEmY(), null);
         g.dispose();
     }
 

@@ -11,7 +11,7 @@ public class Main extends JFrame {
         super.setSize(1980, 1080);
         super.setTitle("Operador");
         super.setLocationRelativeTo(null);
-        super.setDefaultCloseOperation(ABORT);
+        super.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
     public static void main(String[] args) {
