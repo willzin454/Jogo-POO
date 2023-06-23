@@ -14,8 +14,8 @@ public class Personagem {
     private int alturaImage;
     private int velocidadedeDeslocamento;
 
-    private static final int POSICAO_INICIAL_EM_X = 100;
-    private static final int POSICAO_INICIAL_EM_Y = 100;
+    private static final int POSICAO_INICIAL_EM_X = 575;
+    private static final int POSICAO_INICIAL_EM_Y = 600;
 
     public Personagem(int deslocamento) {
         this.posicaoEmX = POSICAO_INICIAL_EM_X;

@@ -8,13 +8,13 @@ public class Main extends JFrame {
         Fase fase = new Fase();
         super.add(fase);
         super.setVisible(true);
-        super.setSize(1980, 1080);
+        super.setSize(1200,800);
         super.setTitle("Operador");
         super.setLocationRelativeTo(null);
         super.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
     public static void main(String[] args) {
-        Main main = new Main();
+        new Main();
     }
 }
