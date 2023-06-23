@@ -18,7 +18,7 @@ public class Fase extends JPanel implements ActionListener, KeyListener {
     private Timer timer;
 
     private static final int DELAY = 5;
-    private static final int DESLOCAMENTO = 13;
+    private static final int DESLOCAMENTO = 15;
 
     public Fase() {
         this.setFocusable(true);
