@@ -9,6 +9,7 @@ public class Tiro {
     private Image imagem;
     private int larguraImagem;
     private int alturaImagem;
+
     private static final int VELOCIDADE = 10;
 
     public Tiro(int posicaoPersonagemEmX, int posicaoPersonagemEmY) {
@@ -17,7 +18,7 @@ public class Tiro {
     }
 
     public void carregar() {
-        ImageIcon carregando = new ImageIcon("recursos\\imagen6.jpg");
+        ImageIcon carregando = new ImageIcon("recursos\\imagen3.jpg");
         this.imagem = carregando.getImage();
         this.alturaImagem = this.imagem.getWidth(null);
         this.larguraImagem = this.imagem.getHeight(null);

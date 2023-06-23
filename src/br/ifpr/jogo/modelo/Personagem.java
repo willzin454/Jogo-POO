@@ -24,7 +24,7 @@ public class Personagem {
     }
 
     public void carregar() {
-        ImageIcon carregando = new ImageIcon("recursos\\iamgen2.jpg");
+        ImageIcon carregando = new ImageIcon("recursos\\imagen1.jpg");
         this.imagem = carregando.getImage();
         this.alturaImage = this.imagem.getWidth(null);
         this.alturaImage = this.imagem.getHeight(null);
