@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 
 public class Fase extends JPanel implements ActionListener, KeyListener {
 
-    public Image fundo;
+    private Image fundo;
     private Personagem personagem;
     private Timer timer;
 
@@ -48,6 +48,10 @@ public class Fase extends JPanel implements ActionListener, KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         this.personagem.mover(e);
+        if (e.getKeyCode() == KeyEvent.VK_SPACE)
+            personagem.atirar();
+        else
+            personagem.mover(e);
     }
 
     @Override
