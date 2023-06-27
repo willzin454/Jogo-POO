@@ -7,6 +7,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
+
 import javax.swing.Timer;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -19,6 +21,7 @@ public class Fase extends JPanel implements ActionListener, KeyListener {
 
     private static final int DELAY = 5;
     private static final int DESLOCAMENTO = 15;
+    private static final int LARGURA_DA_JANELA = 938;
 
     public Fase() {
         this.setFocusable(true);
@@ -37,6 +40,11 @@ public class Fase extends JPanel implements ActionListener, KeyListener {
         graficos.drawImage(this.fundo, 0, 0, null);
         graficos.drawImage(this.personagem.getImagem(), this.personagem.getPosicaoEmX(),
                 this.personagem.getPosicaoEmY(), null);
+        ArrayList<Tiro> tiros = personagem.getTiros();
+        for (Tiro tiro : tiros) {
+            tiro.carregar();
+            graficos.drawImage(tiro.getImagem(), tiro.getPosicaoEmX(), tiro.getPosicaoEmY(), this);
+        }
         g.dispose();
     }
 
@@ -62,6 +70,14 @@ public class Fase extends JPanel implements ActionListener, KeyListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         this.personagem.atualizar();
+        repaint();
+        ArrayList<Tiro> tiros = personagem.getTiros();
+        for (int i = 0; i < tiros.size(); i++) {
+            if (tiros.get(i).getPosicaoEmX() > LARGURA_DA_JANELA)
+                tiros.remove(i);
+            else
+                tiros.get(i).atualizar();
+        }
         repaint();
     }
 }
