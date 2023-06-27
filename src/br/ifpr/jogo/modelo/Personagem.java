@@ -155,5 +155,5 @@ public class Personagem {
 
     public void setTiros(ArrayList<Tiro> tiros) {
         this.tiros = tiros;
-    }    
+    }
 }
