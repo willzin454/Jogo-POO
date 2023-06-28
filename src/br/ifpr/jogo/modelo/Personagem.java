@@ -81,7 +81,7 @@ public class Personagem {
     public void atirar() {
         int frenteDaNave = this.posicaoEmX + this.larguraImagem;
         int meioDaNave = this.posicaoEmY + (this.alturaImage / 2);
-        Tiro tiro = new Tiro(frenteDaNave + -92, meioDaNave + -225);
+        Tiro tiro = new Tiro(frenteDaNave + -90, meioDaNave + -225);
         this.tiros.add(tiro);
     }
 
