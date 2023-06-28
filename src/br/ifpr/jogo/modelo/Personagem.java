@@ -41,16 +41,16 @@ public class Personagem {
     public void mover(KeyEvent tecla) {
         int codigo = tecla.getKeyCode();
         switch (codigo) {
-            case KeyEvent.VK_UP:
+            case KeyEvent.VK_W:
                 this.deslocamentoEmY = -this.velocidadedeDeslocamento;
                 break;
-            case KeyEvent.VK_DOWN:
+            case KeyEvent.VK_S:
                 this.deslocamentoEmY = this.velocidadedeDeslocamento;
                 break;
-            case KeyEvent.VK_LEFT:
+            case KeyEvent.VK_A:
                 this.deslocamentoEmX = -this.velocidadedeDeslocamento;
                 break;
-            case KeyEvent.VK_RIGHT:
+            case KeyEvent.VK_D:
                 this.deslocamentoEmX = this.velocidadedeDeslocamento;
                 break;
             default:
@@ -61,16 +61,16 @@ public class Personagem {
     public void parar(KeyEvent tecla) {
         int codigo = tecla.getKeyCode();
         switch (codigo) {
-            case KeyEvent.VK_UP:
+            case KeyEvent.VK_W:
                 this.deslocamentoEmY = 0;
                 break;
-            case KeyEvent.VK_DOWN:
+            case KeyEvent.VK_S:
                 this.deslocamentoEmY = 0;
                 break;
-            case KeyEvent.VK_LEFT:
+            case KeyEvent.VK_A:
                 this.deslocamentoEmX = 0;
                 break;
-            case KeyEvent.VK_RIGHT:
+            case KeyEvent.VK_D:
                 this.deslocamentoEmX = 0;
                 break;
             default:
