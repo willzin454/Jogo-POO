@@ -10,7 +10,7 @@ public class Tiro {
     private int larguraImagem;
     private int alturaImagem;
 
-    private static final int VELOCIDADE = 10;
+    private static final int VELOCIDADE = 15;
 
     public Tiro(int posicaoPersonagemEmX, int posicaoPersonagemEmY) {
         this.posicaoEmX = posicaoPersonagemEmX;
