@@ -20,7 +20,7 @@ public class Fase extends JPanel implements ActionListener, KeyListener {
     private Timer timer;
 
     private static final int DELAY = 5;
-    private static final int DESLOCAMENTO = 20;
+    private static final int deslocamento = 20;
     private static final int LARGURA_DA_JANELA = 1920;
 
     public Fase() {
@@ -28,7 +28,7 @@ public class Fase extends JPanel implements ActionListener, KeyListener {
         this.setDoubleBuffered(true);
         ImageIcon carregando = new ImageIcon("recursos\\imagen2.png");
         this.fundo = carregando.getImage();
-        this.personagem = new Personagem(DESLOCAMENTO);
+        this.personagem = new Personagem(deslocamento);
         personagem.carregar();
         this.addKeyListener(this);
         this.timer = new Timer(DELAY, this);

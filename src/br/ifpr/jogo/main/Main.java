@@ -8,7 +8,7 @@ public class Main extends JFrame {
         Fase fase = new Fase();
         super.add(fase);
         super.setVisible(true);
-        super.setSize(1920,1080);
+        super.setSize(1920, 1080);
         super.setTitle("Operador");
         super.setLocationRelativeTo(null);
         super.setDefaultCloseOperation(EXIT_ON_CLOSE);
