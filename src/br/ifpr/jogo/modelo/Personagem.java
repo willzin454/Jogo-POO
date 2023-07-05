@@ -9,11 +9,13 @@ public class Personagem extends ElementoGrafico {
     private static final int POSICAO_INICIAL_EM_X = 950;
     private static final int POSICAO_INICIAL_EM_Y = 800;
     private ArrayList<Tiro> tiros;
+    private ArrayList<SuperTiro> superTiro;
 
     public Personagem(int deslocamento) {
         super.posicaoEmX = POSICAO_INICIAL_EM_X;
         super.posicaoEmY = POSICAO_INICIAL_EM_Y;
         this.tiros = new ArrayList<Tiro>();
+        this.superTiro = new ArrayList<SuperTiro>();
         super.velocidadedeDeslocamento = deslocamento;
     }
 
@@ -73,7 +75,16 @@ public class Personagem extends ElementoGrafico {
         int frenteDaNave = super.posicaoEmX + super.larguraImagem;
         int meioDaNave = super.posicaoEmY + (super.alturaImage / 2);
         Tiro tiro = new Tiro(frenteDaNave + -9, meioDaNave + -80);
+        SuperTiro superTiro = new SuperTiro(frenteDaNave + -9, meioDaNave + -80);
         this.tiros.add(tiro);
+        this.superTiro.add(superTiro);
+    }
+
+    public void SuperAtirar() {
+        int frenteDaNave = super.posicaoEmX + super.larguraImagem;
+        int meioDaNave = super.posicaoEmY + (super.alturaImage / 2);
+        SuperTiro superTiro = new SuperTiro(frenteDaNave + -9, meioDaNave + -80);
+        this.superTiro.add(superTiro);
     }
 
     public ArrayList<Tiro> getTiros() {
@@ -82,5 +93,13 @@ public class Personagem extends ElementoGrafico {
 
     public void setTiros(ArrayList<Tiro> tiros) {
         this.tiros = tiros;
+    }
+
+    public ArrayList<SuperTiro> getSuperTiro() {
+        return this.superTiro;
+    }
+
+    public void setSuperTiro(ArrayList<SuperTiro> superTiro) {
+        this.superTiro = superTiro;
     }
 }

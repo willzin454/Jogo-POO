@@ -75,9 +75,11 @@ public class Fase extends JPanel implements ActionListener, KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         this.personagem.mover(e);
-        if (e.getKeyCode() == KeyEvent.VK_SPACE)
+        if (e.getKeyCode() == KeyEvent.VK_SPACE) {
             personagem.atirar();
-        else
+        } else if (e.getKeyCode() == KeyEvent.VK_F) {
+            personagem.SuperAtirar();
+        } else
             personagem.mover(e);
     }
 
