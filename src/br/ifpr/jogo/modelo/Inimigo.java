@@ -4,7 +4,7 @@ import javax.swing.ImageIcon;
 
 public class Inimigo extends ElementoGrafico {
 
-    private static final int VELOCIDADE = 2;
+    private static final int VELOCIDADE = 5;
 
     public Inimigo(int xAleatorio, int yAleatorio) {
         super.posicaoEmX = xAleatorio;

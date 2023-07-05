@@ -1,6 +1,7 @@
 package br.ifpr.jogo.modelo;
 
 import java.awt.Image;
+import java.awt.Rectangle;
 
 public abstract class ElementoGrafico extends MetodoElementoGrafico {
     protected int posicaoEmX;
@@ -11,6 +12,11 @@ public abstract class ElementoGrafico extends MetodoElementoGrafico {
     protected int alturaImage;
     protected int velocidadedeDeslocamento;
     protected Image imagem;
+    private boolean ehVisivel = true;
+
+    public Rectangle getRectangle() {
+        return new Rectangle(posicaoEmX, posicaoEmY, larguraImagem, alturaImage);
+    }
 
     public int getPosicaoEmX() {
         return this.posicaoEmX;
@@ -44,14 +50,6 @@ public abstract class ElementoGrafico extends MetodoElementoGrafico {
         this.deslocamentoEmY = deslocamentoEmY;
     }
 
-    public Image getImagem() {
-        return this.imagem;
-    }
-
-    public void setImagem(Image imagem) {
-        this.imagem = imagem;
-    }
-
     public int getLarguraImagem() {
         return this.larguraImagem;
     }
@@ -74,5 +72,25 @@ public abstract class ElementoGrafico extends MetodoElementoGrafico {
 
     public void setVelocidadedeDeslocamento(int velocidadedeDeslocamento) {
         this.velocidadedeDeslocamento = velocidadedeDeslocamento;
+    }
+
+    public Image getImagem() {
+        return this.imagem;
+    }
+
+    public void setImagem(Image imagem) {
+        this.imagem = imagem;
+    }
+
+    public boolean isEhVisivel() {
+        return this.ehVisivel;
+    }
+
+    public boolean getEhVisivel() {
+        return this.ehVisivel;
+    }
+
+    public void setEhVisivel(boolean ehVisivel) {
+        this.ehVisivel = ehVisivel;
     }
 }
