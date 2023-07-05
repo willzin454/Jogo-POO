@@ -21,7 +21,10 @@ public class Fase extends JPanel implements ActionListener, KeyListener {
 
     private static final int DELAY = 5;
     private static final int deslocamento = 20;
+    private static final int ALTURA_DA_JANELA = 1080;
     private static final int LARGURA_DA_JANELA = 1920;
+    private static final int QTDE_DE_INIMIGOS = 20;
+    private ArrayList<Inimigo> inimigos;
 
     public Fase() {
         this.setFocusable(true);
@@ -30,9 +33,21 @@ public class Fase extends JPanel implements ActionListener, KeyListener {
         this.fundo = carregando.getImage();
         this.personagem = new Personagem(deslocamento);
         personagem.carregar();
+        this.inicializaInimigos();
         this.addKeyListener(this);
         this.timer = new Timer(DELAY, this);
         this.timer.start();
+    }
+
+    public void inicializaInimigos() {
+        inimigos = new ArrayList<Inimigo>();
+        for (int i = 0; i < QTDE_DE_INIMIGOS; i++) {
+            int x = (int) (Math.random() * 1500 + 150);
+            int y = (int) (Math.random() * -1500 + 250);
+            Inimigo inimigo = new Inimigo(x, y);
+            inimigos.add(inimigo);
+        }
+
     }
 
     public void paint(Graphics g) {
@@ -44,6 +59,10 @@ public class Fase extends JPanel implements ActionListener, KeyListener {
         for (Tiro tiro : tiros) {
             tiro.carregar();
             graficos.drawImage(tiro.getImagem(), tiro.getPosicaoEmX(), tiro.getPosicaoEmY(), this);
+        }
+        for (Inimigo inimigo : inimigos) {
+            inimigo.carregar();
+            graficos.drawImage(inimigo.getImagem(), inimigo.getPosicaoEmX(), inimigo.getPosicaoEmY(), this);
         }
         g.dispose();
     }
@@ -70,13 +89,21 @@ public class Fase extends JPanel implements ActionListener, KeyListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         this.personagem.atualizar();
-        repaint();
         ArrayList<Tiro> tiros = personagem.getTiros();
         for (int i = 0; i < tiros.size(); i++) {
             if (tiros.get(i).getPosicaoEmX() > LARGURA_DA_JANELA)
                 tiros.remove(i);
             else
                 tiros.get(i).atualizar();
+        }
+
+        for (int i = 0; i < this.inimigos.size(); i++) {
+            Inimigo inimigo = this.inimigos.get(i);
+            if (inimigo.getPosicaoEmY() >= ALTURA_DA_JANELA)
+                // inimigos.remove(i);
+                inimigo.setPosicaoEmY(0 + (int) (Math.random() * -1500 + 250));
+            else
+                inimigo.atualizar();
         }
         repaint();
     }
