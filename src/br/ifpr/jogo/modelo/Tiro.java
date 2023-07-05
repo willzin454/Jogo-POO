@@ -11,6 +11,7 @@ public class Tiro extends ElementoGrafico {
         super.posicaoEmY = posicaoPersonagemEmY;
     }
 
+    @Override
     public void carregar() {
         ImageIcon carregando = new ImageIcon("recursos\\imagen3.png");
         super.imagem = carregando.getImage();
@@ -18,6 +19,7 @@ public class Tiro extends ElementoGrafico {
         super.larguraImagem = super.imagem.getHeight(null);
     }
 
+    @Override
     public void atualizar() {
         super.posicaoEmY = super.posicaoEmY - VELOCIDADE;
     }

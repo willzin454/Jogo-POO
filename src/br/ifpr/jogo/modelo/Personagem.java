@@ -19,6 +19,7 @@ public class Personagem extends ElementoGrafico {
         super.velocidadedeDeslocamento = deslocamento;
     }
 
+    @Override
     public void carregar() {
         ImageIcon carregando = new ImageIcon("recursos\\imagen1.png");
         super.imagem = carregando.getImage();
@@ -26,6 +27,7 @@ public class Personagem extends ElementoGrafico {
         super.alturaImage = super.imagem.getHeight(null);
     }
 
+    @Override
     public void atualizar() {
         super.posicaoEmX = super.posicaoEmX + super.deslocamentoEmX;
         super.posicaoEmY = super.posicaoEmY + super.deslocamentoEmY;
@@ -75,12 +77,10 @@ public class Personagem extends ElementoGrafico {
         int frenteDaNave = super.posicaoEmX + super.larguraImagem;
         int meioDaNave = super.posicaoEmY + (super.alturaImage / 2);
         Tiro tiro = new Tiro(frenteDaNave + -9, meioDaNave + -80);
-        SuperTiro superTiro = new SuperTiro(frenteDaNave + -9, meioDaNave + -80);
         this.tiros.add(tiro);
-        this.superTiro.add(superTiro);
     }
 
-    public void SuperAtirar() {
+    public void superAtirar() {
         int frenteDaNave = super.posicaoEmX + super.larguraImagem;
         int meioDaNave = super.posicaoEmY + (super.alturaImage / 2);
         SuperTiro superTiro = new SuperTiro(frenteDaNave + -9, meioDaNave + -80);
