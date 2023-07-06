@@ -51,28 +51,6 @@ public class Fase extends JPanel implements ActionListener, KeyListener {
 
     }
 
-    public void verficarColisoes() {
-        Rectangle formaPersonagem = this.personagem.getRectangle();
-        for (int i = 0; i < this.inimigos.size(); i++) {
-            Inimigo inimigo = inimigos.get(i);
-            Rectangle formaInimigo = inimigo.getRectangle();
-            if (formaInimigo.intersects(formaPersonagem)) {
-                this.personagem.setEhVisivel(false);
-                inimigo.setEhVisivel(false);
-                emJogo = false;
-            }
-            ArrayList<Tiro> tiros = this.personagem.getTiros();
-            for (int j = 0; j < tiros.size(); j++) {
-                Tiro tiro = tiros.get(j);
-                Rectangle formaTiro = tiro.getRectangle();
-                if (formaInimigo.intersects(formaTiro)) {
-                    inimigo.setEhVisivel(false);
-                    tiro.setEhVisivel(false);
-                }
-            }
-        }
-    }
-
     public void paint(Graphics g) {
         Graphics2D graficos = (Graphics2D) g;
         if (emJogo) {
@@ -95,6 +73,28 @@ public class Fase extends JPanel implements ActionListener, KeyListener {
         g.dispose();
     }
 
+    public void verficarColisoes() {
+        Rectangle formaPersonagem = personagem.getRectangle();
+        for (int i = 0; i < this.inimigos.size(); i++) {
+            Inimigo inimigo = inimigos.get(i);
+            Rectangle formaInimigo = inimigo.getRectangle();
+                if (formaPersonagem.intersects(formaInimigo)) {
+                    personagem.setEhVisivel(false);
+                    inimigo.setEhVisivel(false);
+                    emJogo = false;
+                }
+            ArrayList<Tiro> tiros = this.personagem.getTiros();
+            for (int j = 0; j < tiros.size(); j++) {
+                Tiro tiro = tiros.get(j);
+                Rectangle formaTiro = tiro.getRectangle();
+                if (formaInimigo.intersects(formaTiro)) {
+                    inimigo.setEhVisivel(false);
+                    tiro.setEhVisivel(false);
+                }
+            }
+        }
+    }
+
     @Override
     public void keyTyped(KeyEvent e) {
         // TODO Auto-generated method stub
@@ -103,11 +103,11 @@ public class Fase extends JPanel implements ActionListener, KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         this.personagem.mover(e);
-        if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+        if (e.getKeyCode() == KeyEvent.VK_SPACE) 
             personagem.atirar();
-        } else if (e.getKeyCode() == KeyEvent.VK_F) {
+        if (e.getKeyCode() == KeyEvent.VK_F) 
             personagem.superAtirar();
-        } else
+        else
             personagem.mover(e);
     }
 
@@ -131,14 +131,14 @@ public class Fase extends JPanel implements ActionListener, KeyListener {
         for (int i = 0; i < this.inimigos.size(); i++) {
             Inimigo inimigo = this.inimigos.get(i);
             if ((inimigo.getPosicaoEmY() >= ALTURA_DA_JANELA) != !inimigo.getEhVisivel()) {
-                // inimigos.remove(i);
                 inimigo.setPosicaoEmY(0 + (int) (Math.random() * -1500 + 250));
                 inimigo.setPosicaoEmX(0 + (int) (Math.random() * 1500 + 150));
                 inimigo.atualizar();
                 if (inimigo.getPosicaoEmY() >= ALTURA_DA_JANELA || !inimigo.getEhVisivel()) {
                     inimigos.remove(i);
                 }
-            } else
+            }
+            else
                 inimigo.atualizar();
         }
         this.verficarColisoes();
