@@ -68,7 +68,7 @@ public class Fase extends JPanel implements ActionListener, KeyListener {
             }
         } else {
             ImageIcon fimDeJogo = new ImageIcon("recursos\\imagen6.png");
-            graficos.drawImage(fimDeJogo.getImage(), 0, 0, null);
+            graficos.drawImage(fimDeJogo.getImage(), 325, 200, null);
         }
         g.dispose();
     }
