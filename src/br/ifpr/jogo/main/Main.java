@@ -1,11 +1,12 @@
 package br.ifpr.jogo.main;
 
-import br.ifpr.jogo.modelo.Fase;
+import br.ifpr.jogo.modelo.FaseUm;
+
 import javax.swing.JFrame;
 
 public class Main extends JFrame {
     public Main() {
-        Fase fase = new Fase();
+        FaseUm fase = new FaseUm();
         super.add(fase);
         super.setVisible(true);
         super.setSize(1920, 1080);
