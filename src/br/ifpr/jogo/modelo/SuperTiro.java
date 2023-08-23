@@ -4,8 +4,6 @@ import javax.swing.ImageIcon;
 
 public class SuperTiro extends ElementoGrafico {
 
-    private static final int VELOCIDADE = 5;
-
     public SuperTiro(int posicaoPersonagemEmX, int posicaoPersonagemEmY) {
         super.posicaoEmX = posicaoPersonagemEmX;
         super.posicaoEmY = posicaoPersonagemEmY;
@@ -21,6 +19,6 @@ public class SuperTiro extends ElementoGrafico {
 
     @Override
     public void atualizar() {
-        super.posicaoEmY = super.posicaoEmY - VELOCIDADE;
+        super.posicaoEmY = super.posicaoEmY;
     }
 }

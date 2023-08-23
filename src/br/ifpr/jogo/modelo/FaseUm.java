@@ -38,9 +38,8 @@ public class FaseUm extends Fase{
             Inimigo inimigo = new Inimigo(x, y);
             inimigos.add(inimigo);
         }
-
     }
-
+    
     public void paint(Graphics g) {
         Graphics2D graficos = (Graphics2D) g;
         if (emJogo) {
@@ -48,6 +47,7 @@ public class FaseUm extends Fase{
             graficos.drawImage(this.personagem.getImagem(), this.personagem.getPosicaoEmX(),
                     this.personagem.getPosicaoEmY(), null);
             ArrayList<Tiro> tiros = personagem.getTiros();
+            ArrayList<SuperTiro> superAtirar = personagem.getSuperTiro();
             for (Tiro tiro : tiros) {
                 tiro.carregar();
                 graficos.drawImage(tiro.getImagem(), tiro.getPosicaoEmX(), tiro.getPosicaoEmY(), this);
@@ -55,6 +55,9 @@ public class FaseUm extends Fase{
             for (Inimigo inimigo : inimigos) {
                 inimigo.carregar();
                 graficos.drawImage(inimigo.getImagem(), inimigo.getPosicaoEmX(), inimigo.getPosicaoEmY(), this);
+            }
+            for (SuperTiro superTiro : superAtirar) {
+
             }
         } else {
             ImageIcon fimDeJogo = new ImageIcon("recursos\\imagen6.png");
