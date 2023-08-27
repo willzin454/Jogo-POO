@@ -57,7 +57,8 @@ public class FaseUm extends Fase{
                 graficos.drawImage(inimigo.getImagem(), inimigo.getPosicaoEmX(), inimigo.getPosicaoEmY(), this);
             }
             for (SuperTiro superTiro : superAtirar) {
-
+                superTiro.carregar();
+                graficos.drawImage(superTiro.getImagem(), superTiro.getPosicaoEmX(), superTiro.getPosicaoEmY(), this);
             }
         } else {
             ImageIcon fimDeJogo = new ImageIcon("recursos\\imagen6.png");
@@ -72,7 +73,7 @@ public class FaseUm extends Fase{
             Inimigo inimigo = inimigos.get(i);
             Rectangle formaInimigo = inimigo.getRectangle();
             if (formaPersonagem.intersects(formaInimigo)) {
-                personagem.setEhVisivel(false);
+                this.personagem.setEhVisivel(false);
                 inimigo.setEhVisivel(false);
                 emJogo = false;
             }
@@ -83,6 +84,14 @@ public class FaseUm extends Fase{
                 if (formaInimigo.intersects(formaTiro)) {
                     inimigo.setEhVisivel(false);
                     tiro.setEhVisivel(false);
+                }
+            }
+            ArrayList<SuperTiro> superAtirar = this.personagem.getSuperTiro();
+            for (int j = 0; j < superAtirar.size(); j++) {
+                SuperTiro superTiro = superAtirar.get(j);
+                Rectangle formasuperTiro = superTiro.getRectangle();
+                if (formaInimigo.intersects(formasuperTiro)) {
+                    inimigo.setEhVisivel(false);
                 }
             }
         }
@@ -112,13 +121,24 @@ public class FaseUm extends Fase{
     @Override
     public void actionPerformed(ActionEvent e) {
         this.personagem.atualizar();
+        
         ArrayList<Tiro> tiros = personagem.getTiros();
         for (int i = 0; i < tiros.size(); i++) {
             Tiro tiro = tiros.get(i);
-            if (tiros.get(i).getPosicaoEmX() > LARGURA_DA_JANELA || !tiro.getEhVisivel())
+            if (tiros.get(i).getPosicaoEmY() > LARGURA_DA_JANELA || !tiro.getEhVisivel())
                 tiros.remove(i);
             else
                 tiros.get(i).atualizar();
+        }
+
+        ArrayList<SuperTiro> superAtirar = personagem.getSuperTiro();
+        for (int i = 0; i < superAtirar.size(); i++){
+            SuperTiro superTiro = superAtirar.get(i);
+            if (superAtirar.get(i).getPosicaoEmY() > LARGURA_DA_JANELA || !superTiro.getEhVisivel())
+                superAtirar.remove(i);
+            else if
+                (superAtirar.get(i).getPosicaoEmY() != inimigos.size())
+                superTiro.setEhVisivel(false);
         }
 
         for (int i = 0; i < this.inimigos.size(); i++) {
@@ -129,6 +149,10 @@ public class FaseUm extends Fase{
                 inimigo.atualizar();
                 if (inimigo.getPosicaoEmY() >= ALTURA_DA_JANELA || !inimigo.getEhVisivel()) {
                     inimigos.remove(i);
+                } else if (inimigo.getPosicaoEmY() == personagem.getPosicaoEmY()){
+                    this.personagem.setEhVisivel(false);
+                    inimigo.setEhVisivel(false);
+                    emJogo = false;
                 }
             } else
                 inimigo.atualizar();

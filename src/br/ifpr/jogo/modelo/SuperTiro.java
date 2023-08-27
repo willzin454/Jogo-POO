@@ -11,7 +11,7 @@ public class SuperTiro extends ElementoGrafico {
 
     @Override
     public void carregar() {
-        ImageIcon carregando = new ImageIcon("recursos\\imagen5.png");
+        ImageIcon carregando = new ImageIcon("recursos\\imagenT.png");
         super.imagem = carregando.getImage();
         super.alturaImage = super.imagem.getWidth(null);
         super.larguraImagem = super.imagem.getHeight(null);

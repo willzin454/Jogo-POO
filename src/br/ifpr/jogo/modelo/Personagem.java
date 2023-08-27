@@ -76,14 +76,14 @@ public class Personagem extends ElementoGrafico {
     public void atirar() {
         int frenteDaNave = super.posicaoEmX + super.larguraImagem;
         int meioDaNave = super.posicaoEmY + (super.alturaImage / 2);
-        Tiro tiro = new Tiro(frenteDaNave + -9, meioDaNave + -80);
+        Tiro tiro = new Tiro(frenteDaNave + -5, meioDaNave + -80);
         this.tiros.add(tiro);
     }
 
     public void superAtirar() {
         int frenteDaNave = super.posicaoEmX + super.larguraImagem;
         int meioDaNave = super.posicaoEmY + (super.alturaImage / 2);
-        SuperTiro superTiro = new SuperTiro(frenteDaNave + -9, meioDaNave + -80);
+        SuperTiro superTiro = new SuperTiro(frenteDaNave + -2, meioDaNave + -750);
         this.superTiro.add(superTiro);
     }
 
