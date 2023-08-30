@@ -23,7 +23,7 @@ public class Personagem extends ElementoGrafico {
     public void carregar() {
         ImageIcon carregando = new ImageIcon("recursos\\imagen1.png");
         super.imagem = carregando.getImage();
-        super.alturaImage = super.imagem.getWidth(null);
+        super.larguraImagem = super.imagem.getWidth(null);
         super.alturaImage = super.imagem.getHeight(null);
     }
 
@@ -76,7 +76,7 @@ public class Personagem extends ElementoGrafico {
     public void atirar() {
         int frenteDaNave = super.posicaoEmX + super.larguraImagem;
         int meioDaNave = super.posicaoEmY + (super.alturaImage / 2);
-        Tiro tiro = new Tiro(frenteDaNave + -5, meioDaNave + -80);
+        Tiro tiro = new Tiro(frenteDaNave + -9, meioDaNave + -80);
         this.tiros.add(tiro);
     }
 

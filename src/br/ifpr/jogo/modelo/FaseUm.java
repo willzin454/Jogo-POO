@@ -12,11 +12,6 @@ import javax.swing.ImageIcon;
 
 public class FaseUm extends Fase{
 
-    private Image fundo;
-    private Personagem personagem;
-    private Timer timer;
-    private boolean emJogo = true;
-
     public FaseUm() {
         this.setFocusable(true);
         this.setDoubleBuffered(true);
@@ -25,7 +20,7 @@ public class FaseUm extends Fase{
         this.personagem = new Personagem(deslocamento);
         personagem.carregar();
         this.inicializaInimigos();
-        this.addKeyListener(this);
+        //this.addKeyListener(this);
         this.timer = new Timer(DELAY, this);
         this.timer.start();
     }
@@ -45,7 +40,7 @@ public class FaseUm extends Fase{
         if (emJogo) {
             graficos.drawImage(this.fundo, 0, 0, null);
             graficos.drawImage(this.personagem.getImagem(), this.personagem.getPosicaoEmX(),
-                    this.personagem.getPosicaoEmY(), null);
+                    this.personagem.getPosicaoEmY(), this   );
             ArrayList<Tiro> tiros = personagem.getTiros();
             ArrayList<SuperTiro> superAtirar = personagem.getSuperTiro();
             for (Tiro tiro : tiros) {
@@ -62,17 +57,17 @@ public class FaseUm extends Fase{
             }
         } else {
             ImageIcon fimDeJogo = new ImageIcon("recursos\\imagen6.png");
-            graficos.drawImage(fimDeJogo.getImage(), 325, 200, null);
+            graficos.drawImage(fimDeJogo.getImage(), 500, 300, this);
         }
         g.dispose();
     }
 
     public void verficarColisoes() {
-        Rectangle formaPersonagem = personagem.getRectangle();
+        Rectangle formaPersonagem = this.personagem.getRectangle();
         for (int i = 0; i < this.inimigos.size(); i++) {
             Inimigo inimigo = inimigos.get(i);
             Rectangle formaInimigo = inimigo.getRectangle();
-            if (formaPersonagem.intersects(formaInimigo)) {
+            if (formaInimigo.intersects(formaPersonagem)) {
                 this.personagem.setEhVisivel(false);
                 inimigo.setEhVisivel(false);
                 emJogo = false;
@@ -149,10 +144,6 @@ public class FaseUm extends Fase{
                 inimigo.atualizar();
                 if (inimigo.getPosicaoEmY() >= ALTURA_DA_JANELA || !inimigo.getEhVisivel()) {
                     inimigos.remove(i);
-                } else if (inimigo.getPosicaoEmY() == personagem.getPosicaoEmY()){
-                    this.personagem.setEhVisivel(false);
-                    inimigo.setEhVisivel(false);
-                    emJogo = false;
                 }
             } else
                 inimigo.atualizar();

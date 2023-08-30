@@ -14,7 +14,6 @@ public class Main extends JFrame {
         super.setLocationRelativeTo(null);
         super.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
-
     public static void main(String[] args) {
         new Main();
     }
