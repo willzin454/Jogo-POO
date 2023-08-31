@@ -3,7 +3,6 @@ package br.ifpr.jogo.modelo;
 import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import java.util.ArrayList;
-import br.ifpr.jogo.modelo.Fase;
 
 public class Personagem extends ElementoGrafico {
 
