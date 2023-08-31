@@ -2,7 +2,6 @@ package br.ifpr.jogo.modelo;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -20,7 +19,6 @@ public class FaseUm extends Fase{
         this.personagem = new Personagem(deslocamento);
         personagem.carregar();
         this.inicializaInimigos();
-        //this.addKeyListener(this);
         this.timer = new Timer(DELAY, this);
         this.timer.start();
     }

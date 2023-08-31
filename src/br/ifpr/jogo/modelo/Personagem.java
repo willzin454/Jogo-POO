@@ -3,6 +3,7 @@ package br.ifpr.jogo.modelo;
 import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import java.util.ArrayList;
+import br.ifpr.jogo.modelo.Fase;
 
 public class Personagem extends ElementoGrafico {
 
@@ -50,6 +51,12 @@ public class Personagem extends ElementoGrafico {
                 break;
             default:
                 break;
+        }
+    }
+
+    public void Limite(){
+        if(deslocamentoEmX > Fase.LARGURA_DA_JANELA){
+            this.posicaoEmX = posicaoEmX - 3;
         }
     }
 
