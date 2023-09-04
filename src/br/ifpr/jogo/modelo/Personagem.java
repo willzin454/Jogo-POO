@@ -6,10 +6,10 @@ import java.util.ArrayList;
 
 public class Personagem extends ElementoGrafico {
 
-    private static final int POSICAO_INICIAL_EM_X = 950;
-    private static final int POSICAO_INICIAL_EM_Y = 800;
-    private ArrayList<Tiro> tiros;
-    private ArrayList<SuperTiro> superTiro;
+    protected static final int POSICAO_INICIAL_EM_X = 950;
+    protected static final int POSICAO_INICIAL_EM_Y = 800;
+    protected ArrayList<Tiro> tiros;
+    protected ArrayList<SuperTiro> superTiro;
 
     public Personagem(int deslocamento) {
         super.posicaoEmX = POSICAO_INICIAL_EM_X;
@@ -50,12 +50,6 @@ public class Personagem extends ElementoGrafico {
                 break;
             default:
                 break;
-        }
-    }
-
-    public void Limite(){
-        if(deslocamentoEmX > Fase.LARGURA_DA_JANELA){
-            this.posicaoEmX = posicaoEmX - 3;
         }
     }
 

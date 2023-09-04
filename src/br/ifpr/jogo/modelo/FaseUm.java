@@ -1,5 +1,7 @@
 package br.ifpr.jogo.modelo;
 
+import static br.ifpr.jogo.modelo.Fase.QTDE_DE_ASTEROIDES;
+
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
@@ -18,6 +20,7 @@ public class FaseUm extends Fase{
         this.fundo = carregando.getImage();
         this.personagem = new Personagem(deslocamento);
         personagem.carregar();
+        this.inicializaElementosGraficosAdicionais();
         this.inicializaInimigos();
         this.timer = new Timer(DELAY, this);
         this.timer.start();
@@ -32,15 +35,27 @@ public class FaseUm extends Fase{
             inimigos.add(inimigo);
         }
     }
+
+    public void inicializaElementosGraficosAdicionais(){
+        asteroides = new ArrayList<Asteroide>();
+        for (int i = 0; i < QTDE_DE_ASTEROIDES; i++) {
+            int x = (int) (Math.random() * LARGURA_DA_JANELA);
+            int y = (int) (Math.random() * ALTURA_DA_JANELA);
+            Asteroide asteroide = new Asteroide(x, y);
+            asteroides.add(asteroide);
+        }
+    }
     
     public void paint(Graphics g) {
         Graphics2D graficos = (Graphics2D) g;
         if (emJogo) {
             graficos.drawImage(this.fundo, 0, 0, null);
-            graficos.drawImage(this.personagem.getImagem(), this.personagem.getPosicaoEmX(),
-                    this.personagem.getPosicaoEmY(), this   );
+            graficos.drawImage(this.personagem.getImagem(), this.personagem.getPosicaoEmX(),this.personagem.getPosicaoEmY(), this);
             ArrayList<Tiro> tiros = personagem.getTiros();
             ArrayList<SuperTiro> superAtirar = personagem.getSuperTiro();
+            for (Asteroide asteroide : asteroides) {
+                graficos.drawImage(asteroide.getImagem(), asteroide.getPosicaoEmX(), asteroide.getPosicaoEmY(), this);
+            }
             for (Tiro tiro : tiros) {
                 tiro.carregar();
                 graficos.drawImage(tiro.getImagem(), tiro.getPosicaoEmX(), tiro.getPosicaoEmY(), this);
@@ -112,9 +127,13 @@ public class FaseUm extends Fase{
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent e) { 
         this.personagem.atualizar();
-        
+
+        for (Asteroide asteroide : this.asteroides) {
+            asteroide.atualizar();
+        }
+
         ArrayList<Tiro> tiros = personagem.getTiros();
         for (int i = 0; i < tiros.size(); i++) {
             Tiro tiro = tiros.get(i);
