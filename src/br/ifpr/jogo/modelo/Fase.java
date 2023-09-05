@@ -1,5 +1,6 @@
 package br.ifpr.jogo.modelo;
 
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,6 +18,7 @@ public abstract class Fase extends JPanel implements ActionListener, KeyListener
     protected static final int LARGURA_DA_JANELA = 1920;
     protected static final int QTDE_DE_INIMIGOS = 1;
     protected static final int QTDE_DE_ASTEROIDES = 30;
+    protected static final int PONTOS_POR_INIMIGO = 10;
     protected boolean emJogo = true;
     protected Personagem personagem;
     protected ArrayList<Inimigo> inimigos;
@@ -52,23 +54,18 @@ public abstract class Fase extends JPanel implements ActionListener, KeyListener
         }
     }
 
-    @Override
-    public void keyTyped(KeyEvent e) {
+    public void desenhaPontuacao(Graphics2D graficos) {
+        String textoPontuacao = "PONTOS: " + personagem.getPontuacao();
+        graficos.setFont(new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 22));
+        graficos.setColor(new java.awt.Color(255, 255, 255));
+        graficos.drawString(textoPontuacao, 20, 25);
     }
 
     @Override
-    public void keyPressed(KeyEvent e){
-        if(P.posicaoEmX < -1920){
-            P.posicaoEmX = 0;
-        }else if(P.posicaoEmX + P.larguraImagem > LARGURA_DA_JANELA){
-            P.posicaoEmX = LARGURA_DA_JANELA - P.larguraImagem;
-        }
-        if(P.posicaoEmY < 1){
-            P.posicaoEmY = 1;
-        }else if(P.posicaoEmY + P.alturaImage > ALTURA_DA_JANELA){
-            P.posicaoEmY = ALTURA_DA_JANELA - P.alturaImage;
-        }
-    }
+    public abstract void keyTyped(KeyEvent e);
+
+    @Override
+    public abstract void keyPressed(KeyEvent e);
 
     @Override
     public abstract void keyReleased(KeyEvent e);

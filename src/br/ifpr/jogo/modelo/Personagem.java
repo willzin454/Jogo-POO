@@ -10,6 +10,7 @@ public class Personagem extends ElementoGrafico {
     protected static final int POSICAO_INICIAL_EM_Y = 800;
     protected ArrayList<Tiro> tiros;
     protected ArrayList<SuperTiro> superTiro;
+    private int pontuacao;
 
     public Personagem(int deslocamento) {
         super.posicaoEmX = POSICAO_INICIAL_EM_X;
@@ -73,6 +74,21 @@ public class Personagem extends ElementoGrafico {
         }
     }
 
+    public void Limite() {
+        if (posicaoEmX < 1) {
+            this.posicaoEmX = posicaoEmX + 3;
+        } else if (posicaoEmX > -1000) {
+            this.posicaoEmX = posicaoEmX - 3;
+        } else if (posicaoEmY < 1) {
+            this.posicaoEmY = posicaoEmY + 3;
+        } else if (posicaoEmY > 240) {
+            this.posicaoEmY = posicaoEmY - 3;
+        } else {
+            this.posicaoEmX += this.deslocamentoEmX;
+            this.posicaoEmY += this.deslocamentoEmY;
+        }
+    }
+
     public void atirar() {
         int frenteDaNave = super.posicaoEmX + super.larguraImagem;
         int meioDaNave = super.posicaoEmY + (super.alturaImage / 2);
@@ -102,4 +118,13 @@ public class Personagem extends ElementoGrafico {
     public void setSuperTiro(ArrayList<SuperTiro> superTiro) {
         this.superTiro = superTiro;
     }
+
+    public int getPontuacao() {
+        return this.pontuacao;
+    }
+
+    public void setPontuacao(int pontuacao) {
+        this.pontuacao = pontuacao;
+    }
+    
 }
