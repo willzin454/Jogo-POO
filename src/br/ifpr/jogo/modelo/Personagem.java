@@ -73,8 +73,8 @@ public class Personagem extends ElementoGrafico {
                 break;
         }
     }
-
-    public void Limite() {
+   
+    public void Limite() {     //Ainda não esta funcional.
         if (posicaoEmX < 1) {
             this.posicaoEmX = posicaoEmX + 3;
         } else if (posicaoEmX > -1000) {
