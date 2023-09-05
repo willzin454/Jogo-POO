@@ -32,6 +32,7 @@ public class FaseUm extends Fase{
             ArrayList<Tiro> tiros = personagem.getTiros();
             ArrayList<SuperTiro> superAtirar = personagem.getSuperTiro();
             super.desenhaPontuacao(graficos);
+            super.desenharVidas(graficos);
             for (Asteroide asteroide : asteroides) {
                 graficos.drawImage(asteroide.getImagem(), asteroide.getPosicaoEmX(), asteroide.getPosicaoEmY(), this);
             }
@@ -62,7 +63,11 @@ public class FaseUm extends Fase{
             if (formaInimigo.intersects(formaPersonagem)) {
                 this.personagem.setEhVisivel(false);
                 inimigo.setEhVisivel(false);
-                emJogo = false;
+                personagem.vidas += -1;
+                if(personagem.vidas >= 0){
+                    emJogo = true;
+                }else 
+                    emJogo = false;
             }
             ArrayList<Tiro> tiros = this.personagem.getTiros();
             for (int j = 0; j < tiros.size(); j++) {

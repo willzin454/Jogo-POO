@@ -10,7 +10,8 @@ public class Personagem extends ElementoGrafico {
     protected static final int POSICAO_INICIAL_EM_Y = 800;
     protected ArrayList<Tiro> tiros;
     protected ArrayList<SuperTiro> superTiro;
-    private int pontuacao;
+    protected int pontuacao;
+    protected int vidas = 3;
 
     public Personagem(int deslocamento) {
         super.posicaoEmX = POSICAO_INICIAL_EM_X;
@@ -120,6 +121,14 @@ public class Personagem extends ElementoGrafico {
 
     public void setPontuacao(int pontuacao) {
         this.pontuacao = pontuacao;
+    }
+
+    public int getVidas() {
+        return this.vidas;
+    }
+
+    public void setVidas(int vidas) {
+        this.vidas = vidas;
     }
     
 }

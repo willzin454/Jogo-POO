@@ -16,7 +16,7 @@ public abstract class Fase extends JPanel implements ActionListener, KeyListener
     protected static final int deslocamento = 20;
     protected static final int ALTURA_DA_JANELA = 1080;
     protected static final int LARGURA_DA_JANELA = 1920;
-    protected static final int QTDE_DE_INIMIGOS = 1;
+    protected static final int QTDE_DE_INIMIGOS = 30;
     protected static final int QTDE_DE_ASTEROIDES = 30;
     protected static final int PONTOS_POR_INIMIGO = 10;
     protected boolean emJogo = true;
@@ -56,7 +56,16 @@ public abstract class Fase extends JPanel implements ActionListener, KeyListener
         String textoPontuacao = "PONTOS: " + personagem.getPontuacao();
         graficos.setFont(new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 22));
         graficos.setColor(new java.awt.Color(255, 255, 255));
+        graficos.setColor(java.awt.Color.RED);
         graficos.drawString(textoPontuacao, 20, 25);
+    }
+
+    public void desenharVidas(Graphics2D graficos) {
+        String textoVidas = "VIDAS: " + personagem.getVidas();
+        graficos.setFont(new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 22));
+        graficos.setColor(new java.awt.Color(255, 255, 255));
+        graficos.setColor(java.awt.Color.RED);
+        graficos.drawString(textoVidas, 150, 25); 
     }
 
     @Override
