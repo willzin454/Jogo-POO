@@ -16,7 +16,7 @@ public abstract class Fase extends JPanel implements ActionListener, KeyListener
     protected static final int ALTURA_DA_JANELA = 1080;
     protected static final int LARGURA_DA_JANELA = 1920;
     protected static final int QTDE_DE_INIMIGOS = 1;
-    protected static final int QTDE_DE_ASTEROIDES = 40;
+    protected static final int QTDE_DE_ASTEROIDES = 30;
     protected boolean emJogo = true;
     protected Personagem personagem;
     protected ArrayList<Inimigo> inimigos;
@@ -32,9 +32,25 @@ public abstract class Fase extends JPanel implements ActionListener, KeyListener
         addKeyListener(this);
     }
 
-    public abstract void inicializaInimigos();
+    public void inicializaInimigos() {
+        inimigos = new ArrayList<Inimigo>();
+        for (int i = 0; i < QTDE_DE_INIMIGOS; i++) {
+            int x = (int) (Math.random() * 1500 + 150);
+            int y = (int) (Math.random() * -1500 + 250);
+            Inimigo inimigo = new Inimigo(x, y);
+            inimigos.add(inimigo);
+        }
+    }
 
-    public abstract void inicializaElementosGraficosAdicionais();
+    public void inicializaElementosGraficosAdicionais(){
+        asteroides = new ArrayList<Asteroide>();
+        for (int i = 0; i < QTDE_DE_ASTEROIDES; i++) {
+            int x = (int) (Math.random() * LARGURA_DA_JANELA);
+            int y = (int) (Math.random() * ALTURA_DA_JANELA);
+            Asteroide asteroide = new Asteroide(x, y);
+            asteroides.add(asteroide);
+        }
+    }
 
     @Override
     public void keyTyped(KeyEvent e) {

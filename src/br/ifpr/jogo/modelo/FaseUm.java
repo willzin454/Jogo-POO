@@ -1,7 +1,5 @@
 package br.ifpr.jogo.modelo;
 
-import static br.ifpr.jogo.modelo.Fase.QTDE_DE_ASTEROIDES;
-
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
@@ -24,26 +22,6 @@ public class FaseUm extends Fase{
         this.inicializaInimigos();
         this.timer = new Timer(DELAY, this);
         this.timer.start();
-    }
-
-    public void inicializaInimigos() {
-        inimigos = new ArrayList<Inimigo>();
-        for (int i = 0; i < QTDE_DE_INIMIGOS; i++) {
-            int x = (int) (Math.random() * 1500 + 150);
-            int y = (int) (Math.random() * -1500 + 250);
-            Inimigo inimigo = new Inimigo(x, y);
-            inimigos.add(inimigo);
-        }
-    }
-
-    public void inicializaElementosGraficosAdicionais(){
-        asteroides = new ArrayList<Asteroide>();
-        for (int i = 0; i < QTDE_DE_ASTEROIDES; i++) {
-            int x = (int) (Math.random() * LARGURA_DA_JANELA);
-            int y = (int) (Math.random() * ALTURA_DA_JANELA);
-            Asteroide asteroide = new Asteroide(x, y);
-            asteroides.add(asteroide);
-        }
     }
     
     public void paint(Graphics g) {
