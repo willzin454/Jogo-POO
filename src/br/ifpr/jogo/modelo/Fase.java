@@ -26,8 +26,6 @@ public abstract class Fase extends JPanel implements ActionListener, KeyListener
     protected Timer timer;
     protected Image fundo;
 
-    Personagem P = new Personagem(0);
-
     public Fase() {
         setFocusable(true);
         setDoubleBuffered(true);
