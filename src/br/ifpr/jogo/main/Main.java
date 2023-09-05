@@ -1,7 +1,6 @@
 package br.ifpr.jogo.main;
 
 import br.ifpr.jogo.modelo.FaseUm;
-
 import javax.swing.JFrame;
 
 public class Main extends JFrame {

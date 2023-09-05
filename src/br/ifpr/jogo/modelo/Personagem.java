@@ -30,8 +30,18 @@ public class Personagem extends ElementoGrafico {
 
     @Override
     public void atualizar() {
-        super.posicaoEmX = super.posicaoEmX + super.deslocamentoEmX;
-        super.posicaoEmY = super.posicaoEmY + super.deslocamentoEmY;
+        if (super.posicaoEmX < 0) {
+            super.posicaoEmX = 0;
+        } else if (super.posicaoEmX + larguraImagem > Fase.LARGURA_DA_JANELA) {
+            super.posicaoEmX = Fase.LARGURA_DA_JANELA - larguraImagem;
+        } else if (super.posicaoEmY < 0) {
+            super.posicaoEmY = 0;
+        } else if (super.posicaoEmY + alturaImage > Fase.ALTURA_DA_JANELA) {
+            super.posicaoEmY = (Fase.ALTURA_DA_JANELA - alturaImage) + -80;
+        } else {
+            super.posicaoEmX += this.deslocamentoEmX;
+            super.posicaoEmY += this.deslocamentoEmY;
+        }
     }
 
     public void mover(KeyEvent tecla) {
@@ -74,21 +84,6 @@ public class Personagem extends ElementoGrafico {
         }
     }
    
-    public void Limite() {     //Ainda não esta funcional.
-        if (posicaoEmX < 1) {
-            this.posicaoEmX = posicaoEmX + 3;
-        } else if (posicaoEmX > -1000) {
-            this.posicaoEmX = posicaoEmX - 3;
-        } else if (posicaoEmY < 1) {
-            this.posicaoEmY = posicaoEmY + 3;
-        } else if (posicaoEmY > 240) {
-            this.posicaoEmY = posicaoEmY - 3;
-        } else {
-            this.posicaoEmX += this.deslocamentoEmX;
-            this.posicaoEmY += this.deslocamentoEmY;
-        }
-    }
-
     public void atirar() {
         int frenteDaNave = super.posicaoEmX + super.larguraImagem;
         int meioDaNave = super.posicaoEmY + (super.alturaImage / 2);
