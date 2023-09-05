@@ -103,6 +103,10 @@ public class FaseUm extends Fase{
             personagem.atirar();
         else if(e.getKeyCode() == KeyEvent.VK_Q)
             personagem.superAtirar();
+        else if(e.getKeyCode() == KeyEvent.VK_F || emJogo == false){
+            personagem.vidas = 3;
+            emJogo = true;
+        }
         else
             personagem.mover(e);
     }

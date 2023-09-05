@@ -65,7 +65,7 @@ public abstract class Fase extends JPanel implements ActionListener, KeyListener
         graficos.setFont(new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 22));
         graficos.setColor(new java.awt.Color(255, 255, 255));
         graficos.setColor(java.awt.Color.RED);
-        graficos.drawString(textoVidas, 150, 25); 
+        graficos.drawString(textoVidas, 200, 25); 
     }
 
     @Override
