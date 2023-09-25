@@ -1,4 +1,4 @@
-package br.ifpr.jogo.modelo;
+package ifpr.paranavai.jogo.modelo;
 
 import java.awt.Image;
 import java.awt.Rectangle;

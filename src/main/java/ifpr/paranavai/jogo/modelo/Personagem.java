@@ -1,4 +1,4 @@
-package br.ifpr.jogo.modelo;
+package ifpr.paranavai.jogo.modelo;
 
 import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
@@ -23,7 +23,7 @@ public class Personagem extends ElementoGrafico {
 
     @Override
     public void carregar() {
-        ImageIcon carregando = new ImageIcon("recursos\\imagen1.png");
+        ImageIcon carregando = new ImageIcon(getClass().getResource("/imagen1.png"));
         super.imagem = carregando.getImage();
         super.larguraImagem = super.imagem.getWidth(null);
         super.alturaImage = super.imagem.getHeight(null);

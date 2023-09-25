@@ -1,4 +1,4 @@
-package br.ifpr.jogo.modelo;
+package ifpr.paranavai.jogo.modelo;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -14,7 +14,7 @@ public class FaseUm extends Fase{
     public FaseUm() {
         this.setFocusable(true);
         this.setDoubleBuffered(true);
-        ImageIcon carregando = new ImageIcon("recursos\\imagen2.png");
+        ImageIcon carregando = new ImageIcon(getClass().getResource("/imagen2.png"));
         this.fundo = carregando.getImage();
         this.personagem = new Personagem(deslocamento);
         personagem.carregar();
@@ -49,7 +49,7 @@ public class FaseUm extends Fase{
                 graficos.drawImage(superTiro.getImagem(), superTiro.getPosicaoEmX(), superTiro.getPosicaoEmY(), this);
             }
         } else {
-            ImageIcon fimDeJogo = new ImageIcon("recursos\\imagen6.png");
+            ImageIcon fimDeJogo = new ImageIcon(getClass().getResource("/imagen6.png"));
             graficos.drawImage(fimDeJogo.getImage(), 500, 300, this);
         }
         g.dispose();

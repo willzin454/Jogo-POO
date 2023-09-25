@@ -1,4 +1,4 @@
-package br.ifpr.jogo.modelo;
+package ifpr.paranavai.jogo.modelo;
 
 public abstract class MetodoElementoGrafico {
 

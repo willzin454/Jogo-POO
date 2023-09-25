@@ -1,4 +1,4 @@
-package br.ifpr.jogo.modelo;
+package ifpr.paranavai.jogo.modelo;
 
 import javax.swing.ImageIcon;
 
@@ -11,7 +11,7 @@ public class SuperTiro extends ElementoGrafico {
 
     @Override
     public void carregar() {
-        ImageIcon carregando = new ImageIcon("recursos\\imagenT.png");
+        ImageIcon carregando = new ImageIcon(getClass().getResource("/imagenT.png"));
         super.imagem = carregando.getImage();
         super.alturaImage = super.imagem.getWidth(null);
         super.larguraImagem = super.imagem.getHeight(null);

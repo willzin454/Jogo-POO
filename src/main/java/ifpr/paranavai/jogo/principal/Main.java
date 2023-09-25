@@ -1,6 +1,6 @@
-package br.ifpr.jogo.main;
+package ifpr.paranavai.jogo.principal;
 
-import br.ifpr.jogo.modelo.FaseUm;
+import ifpr.paranavai.jogo.modelo.FaseUm;
 import javax.swing.JFrame;
 
 public class Main extends JFrame {
