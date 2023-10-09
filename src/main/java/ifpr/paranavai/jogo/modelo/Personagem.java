@@ -1,13 +1,24 @@
 package ifpr.paranavai.jogo.modelo;
 
 import java.awt.event.KeyEvent;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.swing.ImageIcon;
 import java.util.ArrayList;
 
+@Entity
+@Table(name="tb_personagem")
 public class Personagem extends ElementoGrafico {
 
     protected static final int POSICAO_INICIAL_EM_X = 950;
     protected static final int POSICAO_INICIAL_EM_Y = 800;
+    @Transient
     protected ArrayList<Tiro> tiros;
     protected ArrayList<SuperTiro> superTiro;
     protected int pontuacao;
@@ -130,5 +141,4 @@ public class Personagem extends ElementoGrafico {
     public void setVidas(int vidas) {
         this.vidas = vidas;
     }
-    
 }

@@ -1,5 +1,6 @@
 package ifpr.paranavai.jogo.principal;
 
+import ifpr.paranavai.jogo.conexao.HibernateUtil;
 import ifpr.paranavai.jogo.modelo.FaseUm;
 import javax.swing.JFrame;
 
@@ -14,6 +15,7 @@ public class Main extends JFrame {
         super.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
     public static void main(String[] args) {
+        HibernateUtil.getSession();
         new Main();
     }
 }

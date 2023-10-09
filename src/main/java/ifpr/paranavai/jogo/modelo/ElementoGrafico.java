@@ -3,15 +3,51 @@ package ifpr.paranavai.jogo.modelo;
 import java.awt.Image;
 import java.awt.Rectangle;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+
+@Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Table(name="elemento_grafico")
 public abstract class ElementoGrafico extends MetodoElementoGrafico {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="id_elemento_grafico")
+    protected int idElementoGrafico;
+
+    @Column(name="posicao_em_x")
     protected int posicaoEmX;
+
+    @Column(name="posicao_em_y")
     protected int posicaoEmY;
+
+    @Column(name="deslocamento_em_x")
     protected int deslocamentoEmX;
+
+    @Column(name="deslocamento_em_y")
     protected int deslocamentoEmY;
+
+    @Column(name="largura_imagem")
     protected int larguraImagem;
+
+    @Column(name="altura_image")
     protected int alturaImage;
+
+    @Column(name="velocidadede_deslocamento")
     protected int velocidadedeDeslocamento;
+
+    @Transient
     protected Image imagem;
+
+    @Column(name="ehVisivel")
     private boolean ehVisivel = true;
 
     public Rectangle getRectangle() {
