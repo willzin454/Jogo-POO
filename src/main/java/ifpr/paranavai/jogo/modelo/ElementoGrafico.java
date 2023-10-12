@@ -17,7 +17,6 @@ import javax.persistence.InheritanceType;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @Table(name="elemento_grafico")
 public abstract class ElementoGrafico extends MetodoElementoGrafico {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="id_elemento_grafico")

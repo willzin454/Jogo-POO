@@ -1,8 +1,14 @@
 package ifpr.paranavai.jogo.modelo;
 
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.swing.ImageIcon;
 
 public class SuperTiro extends ElementoGrafico {
+
+    @ManyToOne
+    @JoinColumn(name = "fk_personagem")
+    private Personagem personagem;
 
     public SuperTiro(int posicaoPersonagemEmX, int posicaoPersonagemEmY) {
         super.posicaoEmX = posicaoPersonagemEmX;
@@ -20,5 +26,13 @@ public class SuperTiro extends ElementoGrafico {
     @Override
     public void atualizar() {
         super.posicaoEmY = super.posicaoEmY;
+    }
+
+    public Personagem getPersonagem() {
+        return personagem;
+    }
+
+    public void setPersonagem(Personagem personagem) {
+        this.personagem = personagem;
     }
 }

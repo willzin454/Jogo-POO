@@ -13,25 +13,30 @@ public class Jogador {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_jogador", unique = true, nullable = false)
-    private Integer jogadorId;
+    private Integer idJogador;
 
     @Column(name = "nome", unique = true, nullable = false, length = 100)
     private String nome;
     
     public Jogador() {
     }
+
     public Jogador(String nome) {
         this.nome = nome;
     }
-    public Integer getJogadorId() {
-        return jogadorId;
+
+    public Integer getIdJogador() {
+        return idJogador;
     }
-    public void setJogadorId(Integer jogadorId) {
-        this.jogadorId = jogadorId;
+
+    public void setIdJogador(Integer jogadorId) {
+        this.idJogador = jogadorId;
     }
+
     public String getNome() {
         return nome;
     }
+
     public void setNome(String nome) {
         this.nome = nome;
     }

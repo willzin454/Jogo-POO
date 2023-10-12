@@ -1,28 +1,36 @@
 package ifpr.paranavai.jogo.modelo;
 
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 import javax.swing.ImageIcon;
-import java.util.ArrayList;
 
 @Entity
 @Table(name="tb_personagem")
 public class Personagem extends ElementoGrafico {
 
+    @Column(name = "posicao_inicial_em_x")
     protected static final int POSICAO_INICIAL_EM_X = 950;
+
+    @Column(name = "posicao_inicial_em_y")
     protected static final int POSICAO_INICIAL_EM_Y = 800;
-    @Transient
-    protected ArrayList<Tiro> tiros;
-    protected ArrayList<SuperTiro> superTiro;
+
+    @Column(name = "pontuacao")
     protected int pontuacao;
+
+    @Column(name = "vidas")
     protected int vidas = 3;
+        
+    @OneToMany(mappedBy = "personagem")
+    protected List<Tiro> tiros;
+
+    @OneToMany(mappedBy = "personagem")
+    protected List<SuperTiro> superTiro;
 
     public Personagem(int deslocamento) {
         super.posicaoEmX = POSICAO_INICIAL_EM_X;
@@ -110,19 +118,19 @@ public class Personagem extends ElementoGrafico {
         this.superTiro.add(superTiro);
     }
 
-    public ArrayList<Tiro> getTiros() {
+    public List<Tiro> getTiros() {
         return this.tiros;
     }
 
-    public void setTiros(ArrayList<Tiro> tiros) {
+    public void setTiros(List<Tiro> tiros) {
         this.tiros = tiros;
     }
 
-    public ArrayList<SuperTiro> getSuperTiro() {
+    public List<SuperTiro> getSuperTiro() {
         return this.superTiro;
     }
 
-    public void setSuperTiro(ArrayList<SuperTiro> superTiro) {
+    public void setSuperTiro(List<SuperTiro> superTiro) {
         this.superTiro = superTiro;
     }
 

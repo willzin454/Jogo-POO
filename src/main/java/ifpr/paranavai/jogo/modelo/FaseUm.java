@@ -6,6 +6,8 @@ import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.Timer;
 import javax.swing.ImageIcon;
 
@@ -29,8 +31,8 @@ public class FaseUm extends Fase{
         if (emJogo) {
             graficos.drawImage(this.fundo, 0, 0, null);
             graficos.drawImage(this.personagem.getImagem(), this.personagem.getPosicaoEmX(),this.personagem.getPosicaoEmY(), this);
-            ArrayList<Tiro> tiros = personagem.getTiros();
-            ArrayList<SuperTiro> superAtirar = personagem.getSuperTiro();
+            List<Tiro> tiros = personagem.getTiros();
+            List<SuperTiro> superAtirar = personagem.getSuperTiro();
             super.desenhaPontuacao(graficos);
             super.desenharVidas(graficos);
             for (Asteroide asteroide : asteroides) {
@@ -69,7 +71,7 @@ public class FaseUm extends Fase{
                 }else 
                     emJogo = false;
             }
-            ArrayList<Tiro> tiros = this.personagem.getTiros();
+            List<Tiro> tiros = this.personagem.getTiros();
             for (int j = 0; j < tiros.size(); j++) {
                 Tiro tiro = tiros.get(j);
                 Rectangle formaTiro = tiro.getRectangle();
@@ -80,7 +82,7 @@ public class FaseUm extends Fase{
                     tiro.setEhVisivel(false);
                 }
             }
-            ArrayList<SuperTiro> superAtirar = this.personagem.getSuperTiro();
+            List<SuperTiro> superAtirar = this.personagem.getSuperTiro();
             for (int j = 0; j < superAtirar.size(); j++) {
                 SuperTiro superTiro = superAtirar.get(j);
                 Rectangle formasuperTiro = superTiro.getRectangle();
@@ -126,7 +128,7 @@ public class FaseUm extends Fase{
             asteroide.atualizar();
         }
 
-        ArrayList<Tiro> tiros = personagem.getTiros();
+        List<Tiro> tiros = personagem.getTiros();
         for (int i = 0; i < tiros.size(); i++) {
             Tiro tiro = tiros.get(i);
             if (tiros.get(i).getPosicaoEmY() > LARGURA_DA_JANELA || !tiro.getEhVisivel())
@@ -135,7 +137,7 @@ public class FaseUm extends Fase{
                 tiros.get(i).atualizar();
         }
 
-        ArrayList<SuperTiro> superAtirar = personagem.getSuperTiro();
+        List<SuperTiro> superAtirar = personagem.getSuperTiro();
         for (int i = 0; i < superAtirar.size(); i++){
             SuperTiro superTiro = superAtirar.get(i);
             if (superAtirar.get(i).getPosicaoEmY() > LARGURA_DA_JANELA || !superTiro.getEhVisivel())
