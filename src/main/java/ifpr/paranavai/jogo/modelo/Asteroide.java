@@ -1,8 +1,13 @@
 package ifpr.paranavai.jogo.modelo;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.swing.ImageIcon;
 
-public class Asteroide extends ElementoGrafico{
+@Entity
+@Table(name = "tb_asteroide")
+public class Asteroide extends ElementoGrafico {
+
     private static int VELOCIDADE = 1;
 
     public Asteroide(int xAleatorio, int yAleatorio) {
@@ -12,13 +17,13 @@ public class Asteroide extends ElementoGrafico{
     }
 
     @Override
-    protected void carregar() {
+    public void carregar() {
         ImageIcon carregando = new ImageIcon(getClass().getResource("/imagen5.png"));
         setImagem(carregando.getImage());
     }
 
     @Override
-    protected void atualizar() {
+    public void atualizar() {
         if (this.getPosicaoEmX() < 0) {
             int y = (int) (Math.random() * Fase.ALTURA_DA_JANELA);
             super.setPosicaoEmX(Fase.LARGURA_DA_JANELA);
@@ -26,5 +31,6 @@ public class Asteroide extends ElementoGrafico{
         } else {
             super.setPosicaoEmX(super.getPosicaoEmX() - VELOCIDADE);
         }
-    }    
+    }
+
 }

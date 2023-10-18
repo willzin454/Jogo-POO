@@ -6,17 +6,17 @@ import java.awt.Rectangle;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.GenerationType;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-@Table(name="elemento_grafico")
-public abstract class ElementoGrafico extends MetodoElementoGrafico {
+@Table(name= "tb_elemento_grafico")
+public abstract class ElementoGrafico implements MetodoElementoGrafico {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="id_elemento_grafico")

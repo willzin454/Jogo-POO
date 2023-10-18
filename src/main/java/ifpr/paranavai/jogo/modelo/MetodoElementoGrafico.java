@@ -1,8 +1,7 @@
 package ifpr.paranavai.jogo.modelo;
 
-public abstract class MetodoElementoGrafico {
+public interface MetodoElementoGrafico {
 
-    protected abstract void carregar();
-
-    protected abstract void atualizar();
+    public void carregar();
+    public void atualizar();
 }

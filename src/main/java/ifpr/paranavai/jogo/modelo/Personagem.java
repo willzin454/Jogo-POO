@@ -11,7 +11,7 @@ import javax.persistence.Table;
 import javax.swing.ImageIcon;
 
 @Entity
-@Table(name="tb_personagem")
+@Table(name= "tb_personagem")
 public class Personagem extends ElementoGrafico {
 
     @Column(name = "posicao_inicial_em_x")

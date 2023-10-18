@@ -1,7 +1,11 @@
 package ifpr.paranavai.jogo.modelo;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.swing.ImageIcon;
 
+@Entity
+@Table(name = "tb_inimigo")
 public class Inimigo extends ElementoGrafico {
 
     private static final int VELOCIDADE = 5;
@@ -12,7 +16,7 @@ public class Inimigo extends ElementoGrafico {
     }
 
     @Override
-    protected void carregar() {
+    public void carregar() {
         ImageIcon carregando = new ImageIcon(getClass().getResource("/imagen4.png"));
         super.imagem = carregando.getImage();
         super.alturaImage = super.imagem.getWidth(null);
@@ -20,7 +24,7 @@ public class Inimigo extends ElementoGrafico {
     }
 
     @Override
-    protected void atualizar() {
+    public void atualizar() {
         super.posicaoEmY = super.posicaoEmY + VELOCIDADE;
     }
 
