@@ -1,6 +1,6 @@
-package ifpr.paranavai.jogo.principal;
+package ifpr.paranavai.jogo.visao.principal;
 
-import ifpr.paranavai.jogo.conexao.HibernateUtil;
+import ifpr.paranavai.jogo.controle.hibernate.conexao.HibernateUtil;
 import ifpr.paranavai.jogo.modelo.FaseUm;
 import javax.swing.JFrame;
 

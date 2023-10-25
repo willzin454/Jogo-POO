@@ -6,6 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import org.hibernate.Session;
+
+import ifpr.paranavai.jogo.controle.hibernate.conexao.HibernateUtil;
 
 @Entity
 @Table(name = "tb_jogador")
@@ -17,8 +20,16 @@ public class Jogador {
 
     @Column(name = "nome", unique = true, nullable = false, length = 100)
     private String nome;
-    
-    public Jogador() {
+
+    public class TesteHibernate {
+        public void main(String[] args) {
+            Session sessao = HibernateUtil.getSession();
+            sessao.beginTransaction();
+            Jogador jogador = new Jogador("willzin");
+            sessao.save(jogador);
+            sessao.getTransaction().commit();
+            HibernateUtil.encerraSession();
+        }
     }
 
     public Jogador(String nome) {
