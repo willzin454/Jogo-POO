@@ -37,7 +37,7 @@ public class Personagem extends ElementoGrafico {
         super.posicaoEmY = POSICAO_INICIAL_EM_Y;
         this.tiros = new ArrayList<Tiro>();
         this.superTiro = new ArrayList<SuperTiro>();
-        super.velocidadedeDeslocamento = deslocamento;
+        super.velocidadeDeslocamento = deslocamento;
     }
 
     @Override
@@ -68,16 +68,16 @@ public class Personagem extends ElementoGrafico {
         int codigo = tecla.getKeyCode();
         switch (codigo) {
             case KeyEvent.VK_W:
-                super.deslocamentoEmY = -super.velocidadedeDeslocamento;
+                super.deslocamentoEmY = -super.velocidadeDeslocamento;
                 break;
             case KeyEvent.VK_S:
-                super.deslocamentoEmY = super.velocidadedeDeslocamento;
+                super.deslocamentoEmY = super.velocidadeDeslocamento;
                 break;
             case KeyEvent.VK_A:
-                super.deslocamentoEmX = -super.velocidadedeDeslocamento;
+                super.deslocamentoEmX = -super.velocidadeDeslocamento;
                 break;
             case KeyEvent.VK_D:
-                super.deslocamentoEmX = super.velocidadedeDeslocamento;
+                super.deslocamentoEmX = super.velocidadeDeslocamento;
                 break;
             default:
                 break;

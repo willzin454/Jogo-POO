@@ -2,7 +2,6 @@ package ifpr.paranavai.jogo.modelo;
 
 import java.awt.Image;
 import java.awt.Rectangle;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -40,8 +39,8 @@ public abstract class ElementoGrafico implements MetodoElementoGrafico {
     @Column(name="altura_image")
     protected int alturaImage;
 
-    @Column(name="velocidadede_deslocamento")
-    protected int velocidadedeDeslocamento;
+    @Column(name="velocidade_deslocamento")
+    protected int velocidadeDeslocamento;
 
     @Transient
     protected Image imagem;
@@ -101,12 +100,12 @@ public abstract class ElementoGrafico implements MetodoElementoGrafico {
         this.alturaImage = alturaImage;
     }
 
-    public int getVelocidadedeDeslocamento() {
-        return this.velocidadedeDeslocamento;
+    public int getVelocidadeDeslocamento() {
+        return this.velocidadeDeslocamento;
     }
 
-    public void setVelocidadedeDeslocamento(int velocidadedeDeslocamento) {
-        this.velocidadedeDeslocamento = velocidadedeDeslocamento;
+    public void setVelocidadeDeslocamento(int velocidadeDeslocamento) {
+        this.velocidadeDeslocamento = velocidadeDeslocamento;
     }
 
     public Image getImagem() {
@@ -127,5 +126,13 @@ public abstract class ElementoGrafico implements MetodoElementoGrafico {
 
     public void setEhVisivel(boolean ehVisivel) {
         this.ehVisivel = ehVisivel;
+    }
+
+    public int getIdElementoGrafico() {
+        return idElementoGrafico;
+    }
+
+    public void setIdElementoGrafico(int idElementoGrafico) {
+        this.idElementoGrafico = idElementoGrafico;
     }
 }

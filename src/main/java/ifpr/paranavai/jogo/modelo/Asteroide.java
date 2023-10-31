@@ -6,7 +6,7 @@ import javax.swing.ImageIcon;
 
 @Entity
 @Table(name = "tb_asteroide")
-public class Asteroide extends ElementoGrafico {
+public class Asteroide extends ElementoGrafico{
 
     private static int VELOCIDADE = 1;
 
@@ -32,5 +32,4 @@ public class Asteroide extends ElementoGrafico {
             super.setPosicaoEmX(super.getPosicaoEmX() - VELOCIDADE);
         }
     }
-
 }
