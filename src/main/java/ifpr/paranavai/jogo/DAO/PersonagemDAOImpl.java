@@ -5,14 +5,13 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import ifpr.paranavai.jogo.controle.hibernate.conexao.HibernateUtil;
-import ifpr.paranavai.jogo.modelo.Inimigo;
+import ifpr.paranavai.jogo.modelo.Personagem;
 
-public class InimigoDAOImpl implements InimigoDAO{
-
+public class PersonagemDAOImpl implements PersonagemDAO{
     @Override
-    public Inimigo buscarPorId(int id) {
+    public Personagem buscarPorId(int id) {
         try (Session session = HibernateUtil.getSession()) {
-            return session.get(Inimigo.class, id);
+            return session.get(Personagem.class, id);
         }
     }
 
@@ -20,38 +19,37 @@ public class InimigoDAOImpl implements InimigoDAO{
     public void deletar(int id) {
         try (Session session = HibernateUtil.getSession()) {
             Transaction transaction = session.beginTransaction();
-            Inimigo inimigo = session.get(Inimigo.class, id);
-            if (inimigo != null) {
-                session.delete(inimigo);
+            Personagem personagem = session.get(Personagem.class, id);
+            if (personagem != null) {
+                session.delete(personagem);
             }
             transaction.commit();
         }
     }
 
     @Override
-    public List<Inimigo> listarTodos() {
+    public List<Personagem> listarTodos() {
         try (Session session = HibernateUtil.getSession()) {
-            Query<Inimigo> query = session.createQuery("FROM Inimigo", Inimigo.class);
+            Query<Personagem> query = session.createQuery("FROM Personagem", Personagem.class);
             return query.list();
         }
     }
 
     @Override
-    public void inserir(Inimigo Inimigo) {
+    public void inserir(Personagem Personagem) {
         try (Session session = HibernateUtil.getSession()) {
             Transaction transaction = session.beginTransaction();
-            session.save(Inimigo);
+            session.save(Personagem);
             transaction.commit();
         }
     }
 
     @Override
-    public void atualizar(Inimigo Inimigo) {
+    public void atualizar(Personagem Personagem) {
         try (Session session = HibernateUtil.getSession()) {
             Transaction transaction = session.beginTransaction();
-            session.update(Inimigo);
+            session.update(Personagem);
             transaction.commit();
         }
     }
 }
-// ALT + SHIFT + O = formatar.

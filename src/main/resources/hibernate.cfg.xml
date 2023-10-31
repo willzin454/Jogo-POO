@@ -25,6 +25,7 @@
         <mapping class="ifpr.paranavai.jogo.modelo.Tiro" />
         <mapping class="ifpr.paranavai.jogo.modelo.SuperTiro" />
         <mapping class="ifpr.paranavai.jogo.modelo.Asteroide" />
+        <mapping class="ifpr.paranavai.jogo.modelo.Jogador" />
 
         <!-- Classes que serão persistidas em sala e/ou trabalho -->
         <!--

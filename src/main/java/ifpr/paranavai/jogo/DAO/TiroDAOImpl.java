@@ -5,14 +5,14 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import ifpr.paranavai.jogo.controle.hibernate.conexao.HibernateUtil;
-import ifpr.paranavai.jogo.modelo.Inimigo;
+import ifpr.paranavai.jogo.modelo.Tiro;
 
-public class InimigoDAOImpl implements InimigoDAO{
+public class TiroDAOImpl implements TiroDAO{
 
     @Override
-    public Inimigo buscarPorId(int id) {
+    public Tiro buscarPorId(int id) {
         try (Session session = HibernateUtil.getSession()) {
-            return session.get(Inimigo.class, id);
+            return session.get(Tiro.class, id);
         }
     }
 
@@ -20,38 +20,37 @@ public class InimigoDAOImpl implements InimigoDAO{
     public void deletar(int id) {
         try (Session session = HibernateUtil.getSession()) {
             Transaction transaction = session.beginTransaction();
-            Inimigo inimigo = session.get(Inimigo.class, id);
-            if (inimigo != null) {
-                session.delete(inimigo);
+            Tiro tiro = session.get(Tiro.class, id);
+            if (tiro != null) {
+                session.delete(tiro);
             }
             transaction.commit();
         }
     }
 
     @Override
-    public List<Inimigo> listarTodos() {
+    public List<Tiro> listarTodos() {
         try (Session session = HibernateUtil.getSession()) {
-            Query<Inimigo> query = session.createQuery("FROM Inimigo", Inimigo.class);
+            Query<Tiro> query = session.createQuery("FROM Tiro", Tiro.class);
             return query.list();
         }
     }
 
     @Override
-    public void inserir(Inimigo Inimigo) {
+    public void inserir(Tiro Tiro) {
         try (Session session = HibernateUtil.getSession()) {
             Transaction transaction = session.beginTransaction();
-            session.save(Inimigo);
+            session.save(Tiro);
             transaction.commit();
         }
     }
 
     @Override
-    public void atualizar(Inimigo Inimigo) {
+    public void atualizar(Tiro Tiro) {
         try (Session session = HibernateUtil.getSession()) {
             Transaction transaction = session.beginTransaction();
-            session.update(Inimigo);
+            session.update(Tiro);
             transaction.commit();
         }
     }
 }
-// ALT + SHIFT + O = formatar.
